@@ -8,6 +8,5 @@ class WeatherUpdateTime extends Model
 {
     protected $table = 'weatherUpdateTime';
     public $timestamps = false;
-    public $primaryKey = "cityName";
-    public $incrementing = false;
+    public $primaryKey = "id";
 }

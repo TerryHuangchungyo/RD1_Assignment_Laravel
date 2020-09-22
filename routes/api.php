@@ -18,37 +18,21 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::prefix('station')->group( function(){
-    Route::put('/', function() {
-
-    });
+    Route::put('info', 'StationController@update');
 });
 
 Route::prefix('weather')->group( function(){
-    Route::get('today/{cityName}', function( $cityName ) {
-        echo $cityName;
-    });
+    Route::get('today/{cityName}', 'WeatherController@today');
 
-    Route::get('twoday/{cityName}', function( $cityName ) {
-        echo $cityName;
-    });
+    Route::get('twoday/{cityName}', 'WeatherController@twoday');
 
-    Route::get( 'week/{cityName}', function( $cityName ) {
-        echo $cityName;
-    });
+    Route::put( 'week', 'WeatherController@update');
+    
+    Route::get( 'week/{cityName}', 'WeatherController@week');
 
-    Route::put( 'week', function() {
+    Route::put('rain', 'RainController@update');
 
-    });
-
-    Route::get('rainAvg/{cityName}', function( $cityName ) {
-        echo $cityName;
-    });
-
-    Route::get('rain/{cityName}', function( $cityName ) {
-
-    });
-
-    Route::put('rain', function(){
-
-    });
+    Route::get('rain/{cityName}', 'RainController@rain');
+    
+    Route::get('rain/avg/{cityName}', 'RainController@rainAvg');
 });

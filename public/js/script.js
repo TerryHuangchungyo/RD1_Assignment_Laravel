@@ -13,12 +13,16 @@ $(document).ready(function(){
     $("#city").change(function(){
         $("#TW_CityImg").prop("src","image/city/"+config.TW_CityImg[$(this).val()]);
         $("#cityName").text($(this).val());
-        refreshWeatherData( config.weekWeatherUrl, $(this).val());
+        
+        // refreshWeatherData( config.weekWeatherUrl, $(this).val());
+        getWeatherData( updateTodayWeatherUI, config.todayWeatherUrl, $(this).val() );
+        getWeatherData( updateTwodayWeatherUI, config.twodayWeatherUrl, $(this).val() );
+        getWeatherData( updateWeekWeatherUI, config.weekWeatherUrl, $(this).val() );
         getRainAvgData( updateRainAvgUI, config.rainAvgDataUrl, $(this).val() );
     });
 
     $("#city").trigger("change");
-    refreshStationData( config.stationDataUrl );
+    // refreshStationData( config.stationDataUrl );
     
     $("#rainBtn").click(function(){
         getRainData( updateRainUI, config.rainDataUrl, $("#city").val() );
@@ -40,7 +44,7 @@ function refreshStationData( resourceUrl ) {
             $("#rainBtn").text("更新中...");
         }
     }).done( function( msg ) {
-        refreshRainData( config.rainDataUrl );
+        refreshRainData( config.rainDataUrl.substring(0,(config.rainDataUrl.length-1)) );
     }).fail(function(){
         alert("更新站台資料失敗");
     });
@@ -75,10 +79,10 @@ function getRainAvgData( callback = null, resourceUrl, cityName ) {
 }
 
 function updateRainAvgUI( data ) {
-    let str_1hr = ( parseFloat(data["avg_1hr"])>=0 ? data["avg_1hr"]+" mm" : "沒有資料" );
-    $("#avg_1hr").text( str_1hr );
-    let str_24hr = ( parseFloat(data["avg_24hr"])>=0 ? data["avg_24hr"]+" mm" : "沒有資料" );
-    $("#avg_24hr").text( str_24hr );
+    let str_1hr = ( parseFloat(data["rain_1hr"])>=0 ? data["rain_1hr"]+" mm" : "沒有資料" );
+    $("#rain_1hr").text( str_1hr );
+    let str_24hr = ( parseFloat(data["rain_24hr"])>=0 ? data["rain_24hr"]+" mm" : "沒有資料" );
+    $("#rain_24hr").text( str_24hr );
 }
 
 function getRainData( callback = null, resourceUrl, cityName ) {

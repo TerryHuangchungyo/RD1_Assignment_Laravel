@@ -2,8 +2,8 @@ export const todayWeatherUrl = "./api/weather/today/";
 export const twodayWeatherUrl = "./api/weather/twoday/";
 export const weekWeatherUrl = "./api/weather/week/";
 export const rainDataUrl = "./api/weather/rain/";
-export const rainAvgDataUrl = "./api/weather/rainAvg/";
-export const stationDataUrl = "./api/Station/info";
+export const rainAvgDataUrl = "./api/weather/rain/avg/";
+export const stationDataUrl = "./api/station/info";
 
 export const TW_CityName = [
     '臺北市', '新北市', '基隆市',

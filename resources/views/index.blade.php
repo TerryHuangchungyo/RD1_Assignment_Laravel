@@ -46,9 +46,9 @@
                     <div class="col-2 offset-1 mt-1 my-auto"><img src="image/util/drop.png" alt="drop" class="in-card-img img-fluid ml-auto"></div>
                     <div class="col-4 p-2 my-auto">
                         <h5>過去1小時降雨量</h5>
-                        <p id="avg_1hr">0.5 mm</p>
+                        <p id="rain_1hr">0.5 mm</p>
                         <h5>過去24小時降雨量</h5>
-                        <p id="avg_24hr">24 mm</p>
+                        <p id="rain_24hr">24 mm</p>
                         <button id="rainBtn" type="button" class="btn btn-info">查看各觀測站降雨資料</button>
                     </div>
                 </div>

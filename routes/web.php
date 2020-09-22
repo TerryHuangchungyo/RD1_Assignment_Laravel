@@ -16,14 +16,3 @@ use App\Crawler\StationCrawler;
 Route::get('/', function () {
     return view('index');
 });
-
-Route::get('config', function(){
-    $crawler = new StationCrawler();
-    $dataset = $crawler->setUrl( Config::get( 'opendata.url') )
-                    ->setAuthCode( Config::get( 'opendata.auth') )
-                    ->setDatasetId( Config::get( 'opendata.stationDatasetId') )
-                    ->getData();
-    var_dump($dataset);
-});
-
-Route::get( 'test', 'StationController@update' );
